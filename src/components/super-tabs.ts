@@ -26,7 +26,7 @@ import {
   ViewController
 } from 'ionic-angular';
 import { NavigationContainer } from 'ionic-angular/navigation/navigation-container';
-import { Observable, Subscription, fromEvent, merge } from 'rxjs';
+import { Observable, Subscription, fromEvent as observableFromEvent, merge } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { SuperTabsToolbar } from './super-tabs-toolbar';
 import { SuperTabsContainer } from './super-tabs-container';
@@ -274,8 +274,8 @@ export class SuperTabs implements OnInit, AfterContentInit, AfterViewInit, OnDes
     }
 
     const obsToMerge: Observable<any>[] = [
-      Observable.fromEvent(window, 'orientationchange'),
-      Observable.fromEvent(window, 'resize')
+      observableFromEvent(window, 'orientationchange'),
+      observableFromEvent(window, 'resize')
     ];
 
     if (viewCtrl) {
